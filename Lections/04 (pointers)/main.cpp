@@ -10,6 +10,7 @@
     требуется, чтобы аргумент амперсанта был lvalue
 
     Размер - implementation-defined (но кажется 8 байт)
+    А вот на методы виртуального класса - 16 байт
     *nullptr - нулевой указатель
 */
 
@@ -29,7 +30,7 @@ int main() {
     }
     {
         int x = 1;
-        int*p = &x;
+        int* p = &x;
         std::cout << &*p << " " << *&p << std::endl; // the same
     }
     int* p;
@@ -38,17 +39,19 @@ int main() {
         p = &b;
         std::cout << p << std::endl;
     }
-    std::cout << p << " " << *p << std::endl; //* UB, BUT "memory reuse" b's lifetime ended, but pointer
+    std::cout << p << " " << *p << std::endl;
+    //* UB, BUT "memory reuse" b's lifetime ended, but pointer
     //* is still alive
     {
         int x = 0;
         double d = 3.14;
-        // std::cout << (&x < &d) << std::endl; //!error: comparison of distinct pointer types ('int *' and 'double *')
+        // std::cout << (&x < &d) << std::endl; //! error: comparison of distinct pointer types ('int *' and 'double *')
     }
     {
         int y = 20;
         void* p = &y; // void pointer can cast to any pointer
         std::cout << p << std::endl;
         // No operations with void*
+        // even no operation*
     }
 }
