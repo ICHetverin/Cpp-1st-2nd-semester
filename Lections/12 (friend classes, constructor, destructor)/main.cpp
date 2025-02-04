@@ -65,7 +65,7 @@ public:
         memset(arr, c, n); // Вот первый аргумент void* потому что без разницы какой тип
         // std::fill(arr, arr + size, c); // Вот ровно то же самое
     } // Non-trivial constructor
-    String(std::initializer_list<char> list) //  TODO: как под капотом initializer list
+    String(std::initializer_list<char> list)
             : arr(new char[list.size() + 1])
             , size(list.size())
             , capacity(list.size() + 1) {
