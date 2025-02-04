@@ -1,25 +1,26 @@
 #include <iostream>
 
 /*
-    *Types of memory
-    *- Data (static memory (global, namespace local, ...))
-    *- Text
-    *- Stack (automatic memory (local variables, ...)) ~ 8Мб
+    * Types of memory
+    * - Data (static memory (global, namespace local, ...))
+    * (vtables)
+    * - Text (machine code 10100010)
+    * - Stack (automatic memory (local variables, ...)) ~ 8Мб
     при новых данных локальных - они доабвляются в стек, при окончании области видимости
     они удаляются со стека (push, pop)
-    *- Heap (dynamic memory (new, delete, malloc, calloc, realloc, ...))
+    * - Heap (dynamic memory (new, delete, malloc, calloc, realloc, ...))
     вот она выдается по ходу рантайма
 
-    *-- functions:
+    * -- functions:
     void foo(int y) {
         cout << y + 1;
     }
     на стэк складывается y (данные при функции), а также
     адрес след строчки после функции в теле, где вызывается
 
-    !Stack overflow - весь стэк забивается (seg fault)
+    ! Stack overflow - весь стэк забивается (seg fault)
 
-    *Static переменные
+    * Static переменные
     "просим" чтобы переменная лежала не в стэковой, а в статической памяти - постоянный адрес
 */
 

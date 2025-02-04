@@ -19,6 +19,7 @@ public:
 
     friend void g(C, int); // Вот так можно объявлять в любом месте friend фцию/класс
     // Но если определить и здесь и вне - то это будет redefinition
+    // Потому что это объявление функции в глобал
 };
 
 void g(C c, int y) {
@@ -64,7 +65,7 @@ public:
         memset(arr, c, n); // Вот первый аргумент void* потому что без разницы какой тип
         // std::fill(arr, arr + size, c); // Вот ровно то же самое
     } // Non-trivial constructor
-    String(std::initializer_list<char> list) //  TODO: как под капотом initializer list
+    String(std::initializer_list<char> list)
             : arr(new char[list.size() + 1])
             , size(list.size())
             , capacity(list.size() + 1) {
@@ -116,6 +117,6 @@ int main() {
         String s3 = {1, 2, 3, 4, 4};
         // А вот обычный конструктор от скобок всегда такой
         String s4(2, 'a');
-    } 
+    }
 }
 
